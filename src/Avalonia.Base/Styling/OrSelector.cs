@@ -102,7 +102,7 @@ namespace Avalonia.Styling
             }
         }
 
-        private protected override (Selector?, IStyle?) MovePrevious(IStyle? parent) => (null, null);
+        protected override Selector? MovePrevious() => null;
 
         internal override bool HasValidNestingSelector()
         {
