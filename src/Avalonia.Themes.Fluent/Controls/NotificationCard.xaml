@@ -53,7 +53,7 @@
       </Animation>
     </ControlTheme.Animations>
 
-  <Style Selector="NotificationCard[IsClosing=true] /template/ LayoutTransformControl#PART_LayoutTransformControl">
+  <Style Selector="^[IsClosing=true] /template/ LayoutTransformControl#PART_LayoutTransformControl">
     <Setter Property="RenderTransformOrigin" Value="50%,0%"/>
     <Style.Animations>
       <Animation Duration="0:0:0.75" Easing="QuadraticEaseOut" FillMode="Forward">
@@ -73,7 +73,7 @@
     </Style.Animations>
   </Style>
 
-  <Style Selector="NotificationCard[IsClosing=true]">
+  <Style Selector="^[IsClosing=true]">
     <Style.Animations>
       <Animation Duration="0:0:1.25" Easing="QuadraticEaseOut" FillMode="Forward">
         <KeyFrame Cue="100%">
@@ -83,16 +83,16 @@
     </Style.Animations>
   </Style>
 
-  <Style Selector="NotificationCard:information /template/ Panel#PART_HeaderBar">
+  <Style Selector="^:information /template/ Panel#PART_HeaderBar">
     <Setter Property="Background" Value="{DynamicResource NotificationCardInformationBackgroundBrush}"/>
   </Style>
-  <Style Selector="NotificationCard:success /template/ Panel#PART_HeaderBar">
+  <Style Selector="^:success /template/ Panel#PART_HeaderBar">
     <Setter Property="Background" Value="{DynamicResource NotificationCardSuccessBackgroundBrush}"/>
   </Style>
-  <Style Selector="NotificationCard:warning /template/ Panel#PART_HeaderBar">
+  <Style Selector="^:warning /template/ Panel#PART_HeaderBar">
     <Setter Property="Background" Value="{DynamicResource NotificationCardWarningBackgroundBrush}"/>
   </Style>
-  <Style Selector="NotificationCard:error /template/ Panel#PART_HeaderBar">
+  <Style Selector="^:error /template/ Panel#PART_HeaderBar">
     <Setter Property="Background" Value="{DynamicResource NotificationCardErrorBackgroundBrush}"/>
   </Style>
   </ControlTheme>
