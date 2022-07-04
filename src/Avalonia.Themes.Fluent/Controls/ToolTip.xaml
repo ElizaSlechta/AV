@@ -60,9 +60,9 @@
         </ControlTemplate>
       </Setter>
 
-      <Style Selector="^ > TextBlock">
+      <!--<Style Selector="^ > TextBlock">
         <Setter Property="TextWrapping" Value="Wrap" />
-      </Style>
+      </Style>-->
 
       <Style Selector="^:open">
         <Setter Property="Opacity" Value="1" />
