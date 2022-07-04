@@ -89,8 +89,8 @@ namespace Avalonia.Styling
             
         }
 
-        protected override Selector? MovePrevious() => _previous;
-        internal override bool HasValidNestingSelector() => _previous?.HasValidNestingSelector() ?? false;
+        private protected override (Selector?, IStyle?) MovePrevious(IStyle? nestingParent) => (_previous, nestingParent);
+        private protected override Selector? MovePreviousOrParent() => _previous;
 
         internal static bool Compare(Type propertyType, object? propertyValue, object? value)
         {

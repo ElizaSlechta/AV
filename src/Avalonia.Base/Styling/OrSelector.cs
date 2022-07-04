@@ -102,19 +102,13 @@ namespace Avalonia.Styling
             }
         }
 
-        protected override Selector? MovePrevious() => null;
+        private protected override (Selector?, IStyle?) MovePrevious(IStyle? nestingParent) => (null, null);
+        private protected override Selector? MovePreviousOrParent() => null;
 
-        internal override bool HasValidNestingSelector()
+        internal override void ValidateNestingSelector(bool inControlTheme)
         {
             foreach (var selector in _selectors)
-            {
-                if (!selector.HasValidNestingSelector())
-                {
-                    return false;
-                }
-            }
-
-            return true;
+                selector.ValidateNestingSelector(inControlTheme);
         }
 
         private Type? EvaluateTargetType()

@@ -84,9 +84,44 @@ namespace Avalonia.Styling
         /// <summary>
         /// Moves to the previous selector.
         /// </summary>
-        protected abstract Selector? MovePrevious();
+        /// <param name="nestingParent">
+        /// The parent style, if the selector is on a nested style.
+        /// </param>
+        /// <remarks>
+        /// The previous selector, and its nesting parent.
+        /// </remarks>
+        private protected abstract (Selector?, IStyle?) MovePrevious(IStyle? nestingParent);
 
-        internal abstract bool HasValidNestingSelector();
+        /// <summary>
+        /// Moves to the previous selector or the parent selector.
+        /// </summary>
+        private protected abstract Selector? MovePreviousOrParent();
+
+        internal virtual void ValidateNestingSelector(bool inControlTheme)
+        {
+            var s = this;
+            var templateCount = 0;
+
+            do
+            {
+                if (inControlTheme)
+                {
+                    if (!s.InTemplate && s.IsCombinator)
+                        throw new InvalidOperationException(
+                            "ControlTheme style may not directly contain a child or descendent selector.");
+                    if (s is TemplateSelector && templateCount++ > 0)
+                        throw new InvalidOperationException(
+                            "ControlTemplate styles cannot contain multiple template selectors.");
+                }
+
+                var previous = s.MovePreviousOrParent();
+
+                if (previous is null && s is not NestingSelector)
+                    throw new InvalidOperationException("Child styles must have a nesting selector.");
+
+                s = previous;
+            } while (s is not null);
+        }
 
         private static SelectorMatch MatchUntilCombinator(
             IStyleable control,
@@ -113,14 +148,14 @@ namespace Avalonia.Styling
             ref AndActivatorBuilder activators,
             ref Selector? combinator)
         {
-            var previous = selector.MovePrevious();
+            var (previous, previousParent) = selector.MovePrevious(parent);
 
             // Selectors are stored from right-to-left, so we recurse into the selector in order to
             // reverse this order, because the type selector will be on the left and is our best
             // opportunity to exit early.
             if (previous != null && !previous.IsCombinator)
             {
-                var previousMatch = Match(control, previous, parent, subscribe, ref activators, ref combinator);
+                var previousMatch = Match(control, previous, previousParent, subscribe, ref activators, ref combinator);
 
                 if (previousMatch < SelectorMatchResult.Sometimes)
                 {

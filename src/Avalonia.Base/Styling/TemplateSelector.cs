@@ -48,7 +48,7 @@ namespace Avalonia.Styling
             return _parent.Match(templatedParent, parent, subscribe);
         }
 
-        protected override Selector? MovePrevious() => null;
-        internal override bool HasValidNestingSelector() => _parent?.HasValidNestingSelector() ?? false;
+        private protected override (Selector?, IStyle?) MovePrevious(IStyle? nestingParent) => (null, null);
+        private protected override Selector? MovePreviousOrParent() => _parent;
     }
 }

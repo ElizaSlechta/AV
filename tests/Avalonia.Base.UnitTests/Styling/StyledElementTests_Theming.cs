@@ -82,7 +82,7 @@ public class StyledElementTests_Theming
                     {
                         Setters =
                         {
-                            new Setter(Canvas.BackgroundProperty, Brushes.Red),
+                            new Setter(Panel.BackgroundProperty, Brushes.Red),
                         }
                     },
                 }
@@ -189,6 +189,36 @@ public class StyledElementTests_Theming
             Assert.Null(((IStyleable)target).GetEffectiveTheme());
         }
 
+        [Fact]
+        public void Nested_Style_Can_Override_Property_In_Inner_Templated_Control()
+        {
+            using var app = UnitTestApplication.Start(TestServices.RealStyler);
+            var target = new ThemedControl2
+            {
+                Theme = new ControlTheme(typeof(ThemedControl2))
+                {
+                    Setters =
+                    {
+                        new Setter(
+                            TemplatedControl.TemplateProperty,
+                            new FuncControlTemplate<ThemedControl2>((o, n) => new ThemedControl())),
+                    },
+                    Children =
+                    {
+                        new Style(x => x.Nesting().Template().OfType<ThemedControl>())
+                        {
+                            Setters = { new Setter(TemplatedControl.CornerRadiusProperty, new CornerRadius(7)), }
+                        },
+                    }
+                },
+            };
+
+            var root = CreateRoot(target);
+            var inner = Assert.IsType<ThemedControl>(target.VisualChild);
+
+            Assert.Equal(new CornerRadius(7), inner.CornerRadius);
+        }
+
         private static ThemedControl CreateTarget() => new ThemedControl();
 
         private static TestRoot CreateRoot(IControl child)
@@ -224,6 +254,80 @@ public class StyledElementTests_Theming
             Assert.Equal(border.Background, Brushes.Green);
         }
 
+        [Fact]
+        public void Theme_Can_Be_Changed_By_Style_Class()
+        {
+            using var app = UnitTestApplication.Start(TestServices.RealStyler);
+            var target = CreateTarget();
+            var theme1 = CreateTheme();
+            var theme2 = new ControlTheme(typeof(ThemedControl));
+            var root = new TestRoot()
+            {
+                Styles =
+                {
+                    new Style(x => x.OfType<ThemedControl>())
+                    {
+                        Setters = { new Setter(StyledElement.ThemeProperty, theme1) }
+                    },
+                    new Style(x => x.OfType<ThemedControl>().Class("bar"))
+                    {
+                        Setters = { new Setter(StyledElement.ThemeProperty, theme2) }
+                    },
+                }
+            };
+
+            root.Child = target;
+            root.LayoutManager.ExecuteInitialLayoutPass();
+
+            Assert.Same(theme1, target.Theme);
+            Assert.NotNull(target.Template);
+
+            target.Classes.Add("bar");
+            Assert.Same(theme2, target.Theme);
+            Assert.Null(target.Template);
+        }
+
+        [Fact]
+        public void Theme_Can_Be_Set_To_LocalValue_While_Updating_Due_To_Style_Class()
+        {
+            using var app = UnitTestApplication.Start(TestServices.RealStyler);
+            var target = CreateTarget();
+            var theme1 = CreateTheme();
+            var theme2 = new ControlTheme(typeof(ThemedControl));
+            var theme3 = new ControlTheme(typeof(ThemedControl));
+            var root = new TestRoot()
+            {
+                Styles =
+                {
+                    new Style(x => x.OfType<ThemedControl>())
+                    {
+                        Setters = { new Setter(StyledElement.ThemeProperty, theme1) }
+                    },
+                    new Style(x => x.OfType<ThemedControl>().Class("bar"))
+                    {
+                        Setters = { new Setter(StyledElement.ThemeProperty, theme2) }
+                    },
+                }
+            };
+
+            root.Child = target;
+            root.LayoutManager.ExecuteInitialLayoutPass();
+
+            Assert.Same(theme1, target.Theme);
+            Assert.NotNull(target.Template);
+
+            target.Classes.Add("bar");
+
+            // At this point, theme2 has been promoted to a local value internally in StyledElement;
+            // make sure that setting a new local value here doesn't cause it to be cleared when we
+            // do a layout pass because StyledElement thinks its clearing the promoted theme.
+            target.Theme = theme3;
+
+            root.LayoutManager.ExecuteLayoutPass();
+
+            Assert.Same(target.Theme, theme3);
+        }
+
         private static ThemedControl CreateTarget()
         {
             return new ThemedControl();
@@ -234,15 +338,12 @@ public class StyledElementTests_Theming
             var result = new TestRoot()
             {
                 Styles =
-            {
-                new Style(x => x.OfType<ThemedControl>())
                 {
-                    Setters =
+                    new Style(x => x.OfType<ThemedControl>())
                     {
-                        new Setter(TemplatedControl.ThemeProperty, CreateTheme())
+                        Setters = { new Setter(StyledElement.ThemeProperty, CreateTheme()) }
                     }
                 }
-            }
             };
 
             result.Child = child;
@@ -260,23 +361,18 @@ public class StyledElementTests_Theming
             TargetType = typeof(ThemedControl),
             Setters =
             {
-                new Setter(ThemedControl.TemplateProperty, template),
+                new Setter(TemplatedControl.TemplateProperty, template),
+                new Setter(TemplatedControl.CornerRadiusProperty, new CornerRadius(5)),
             },
             Children =
             {
                 new Style(x => x.Nesting().Template().OfType<Border>())
                 {
-                    Setters =
-                    {
-                        new Setter(Border.BackgroundProperty, Brushes.Red),
-                    }
+                    Setters = { new Setter(Border.BackgroundProperty, Brushes.Red) }
                 },
                 new Style(x => x.Nesting().Class("foo").Template().OfType<Border>())
                 {
-                    Setters =
-                    {
-                        new Setter(Border.BackgroundProperty, Brushes.Green),
-                    }
+                    Setters = { new Setter(Border.BackgroundProperty, Brushes.Green) }
                 },
             }
         };
@@ -296,23 +392,22 @@ public class StyledElementTests_Theming
             {
                 new Style(x => x.Nesting().Template().OfType<Border>())
                 {
-                    Setters =
-                    {
-                        new Setter(Border.BorderBrushProperty, Brushes.Yellow),
-                    }
+                    Setters = { new Setter(Border.BorderBrushProperty, Brushes.Yellow) }
                 },
                 new Style(x => x.Nesting().Class("foo").Template().OfType<Border>())
                 {
-                    Setters =
-                    {
-                        new Setter(Border.BorderBrushProperty, Brushes.Cyan),
-                    }
+                    Setters = { new Setter(Border.BorderBrushProperty, Brushes.Cyan) }
                 },
             }
         };
     }
 
     private class ThemedControl : TemplatedControl
+    {
+        public IVisual? VisualChild => VisualChildren?.SingleOrDefault();
+    }
+
+    private class ThemedControl2 : TemplatedControl
     {
         public IVisual? VisualChild => VisualChildren?.SingleOrDefault();
     }
