@@ -62,7 +62,7 @@
       <Style Selector="^:hasnotime /template/ Button#FlyoutButton TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource TextControlPlaceholderForeground}" />
       </Style>
-      <Style Selector="^:error /template/ Button#FlyoutButton /template/ ContentPresenter">
+      <!--<Style Selector="^:error /template/ Button#FlyoutButton /template/ ContentPresenter">
         <Setter Property="BorderBrush" Value="{DynamicResource SystemControlErrorTextForegroundBrush}" />
       </Style>
       <Style Selector="^ /template/ Button">
@@ -81,7 +81,7 @@
           <Setter Property="BorderBrush" Value="{DynamicResource TimePickerButtonBorderBrushDisabled}" />
           <Setter Property="Foreground" Value="{DynamicResource TimePickerButtonForegroundDisabled}" />
         </Style>
-      </Style>
+      </Style>-->
       <Style Selector="^:disabled /template/">
         <Style Selector="^ ContentPresenter#HeaderContentPresenter">
           <Setter Property="Foreground" Value="{DynamicResource TimePickerHeaderForegroundDisabled}" />
