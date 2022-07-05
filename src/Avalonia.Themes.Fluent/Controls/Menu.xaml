@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!--<Design.PreviewWith>
-    <Border Padding="20">
-      <Menu>
-        <MenuItem Header="New" />
-        <MenuItem Header="Open" />
-      </Menu>
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Padding="20">
+        <Menu>
+          <MenuItem Header="New" />
+          <MenuItem Header="Open" />
+        </Menu>
+      </Border>
+    </Design.PreviewWith>
 
     <x:Double x:Key="MenuBarHeight">32</x:Double>
 

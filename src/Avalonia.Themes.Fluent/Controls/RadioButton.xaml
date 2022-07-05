@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!--<Design.PreviewWith>
+  <Design.PreviewWith>
     <Border Padding="20">
       <StackPanel Spacing="10">
         <RadioButton Content="Option 1" Background="Green" />
@@ -8,7 +8,8 @@
         <RadioButton Content="Option 2" />
       </StackPanel>
     </Border>
-  </Design.PreviewWith>-->
+  </Design.PreviewWith>
+  
   <ControlTheme x:Key="{x:Type RadioButton}" TargetType="RadioButton">
     <Setter Property="Background" Value="{DynamicResource RadioButtonBackground}" />
     <Setter Property="Foreground" Value="{DynamicResource RadioButtonForeground}" />

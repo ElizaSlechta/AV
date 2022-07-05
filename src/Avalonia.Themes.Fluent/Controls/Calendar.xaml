@@ -1,5 +1,4 @@
-﻿
-<!--
+﻿<!--
     // (c) Copyright Microsoft Corporation.
     // This source is subject to the Microsoft Public License (Ms-PL).
     // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
@@ -8,11 +7,11 @@
 
 <ResourceDictionary xmlns="https://github.com/avaloniaui" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--<Design.PreviewWith>
+   <Design.PreviewWith>
     <Border Padding="20">
       <Calendar />
     </Border>
-  </Design.PreviewWith>-->
+  </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type Calendar}" TargetType="Calendar">
         <Setter Property="Foreground" Value="{DynamicResource CalendarViewForeground}" />

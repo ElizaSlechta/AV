@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!--<Design.PreviewWith>
+  <Design.PreviewWith>
     <Border Padding="20">
       <StackPanel Spacing="20">
         <ToggleButton Content="Click Me!" />
@@ -8,7 +8,7 @@
         <ToggleButton Content="Three state" IsThreeState="True" />
       </StackPanel>
     </Border>
-  </Design.PreviewWith>-->
+  </Design.PreviewWith>
 
     <Thickness x:Key="ButtonPadding">8,5,8,6</Thickness>
 

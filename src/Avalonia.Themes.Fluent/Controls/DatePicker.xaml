@@ -9,11 +9,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=netstandard"
         x:CompileBindings="True">
-  <!--<Design.PreviewWith>
-    <Border Padding="20">
-      <DatePicker CornerRadius="10" />
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Padding="20">
+        <DatePicker CornerRadius="10" />
+      </Border>
+    </Design.PreviewWith>
 
     <Thickness x:Key="DatePickerTopHeaderMargin">0,0,0,4</Thickness>
     <x:Double x:Key="DatePickerFlyoutPresenterHighlightHeight">40</x:Double>

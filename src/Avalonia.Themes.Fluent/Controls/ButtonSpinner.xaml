@@ -3,23 +3,23 @@
                     xmlns:sys="clr-namespace:System;assembly=netstandard"
                     xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
                     x:CompileBindings="True">
-  <!--<Design.PreviewWith>
-    <Border Padding="20" Background="Black">
-      <StackPanel Spacing="20">
-        <ButtonSpinner ButtonSpinnerLocation="Right"
-                       Content="Right disabled inline spinner"
-                       AllowSpin="False">
-          <DataValidationErrors.Error>
-            <sys:Exception />
-          </DataValidationErrors.Error>
-        </ButtonSpinner>
-        <ButtonSpinner ButtonSpinnerLocation="Left"
-                       Content="Left spinner" />
-        <ButtonSpinner ShowButtonSpinner="False"
-                       Content="Hide spinner" />
-      </StackPanel>
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Padding="20" Background="Black">
+        <StackPanel Spacing="20">
+          <ButtonSpinner ButtonSpinnerLocation="Right"
+                         Content="Right disabled inline spinner"
+                         AllowSpin="False">
+            <DataValidationErrors.Error>
+              <sys:Exception />
+            </DataValidationErrors.Error>
+          </ButtonSpinner>
+          <ButtonSpinner ButtonSpinnerLocation="Left"
+                         Content="Left spinner" />
+          <ButtonSpinner ShowButtonSpinner="False"
+                         Content="Hide spinner" />
+        </StackPanel>
+      </Border>
+    </Design.PreviewWith>
 
     <converters:MarginMultiplierConverter x:Key="ButtonSpinner_OnlyLeftThinknessConverter"
                                           Indent="1"

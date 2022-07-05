@@ -3,28 +3,29 @@
                     xmlns:sys="using:System" 
                     x:CompileBindings="True"
                     x:DataType="DataValidationErrors">
-  <!--<Design.PreviewWith>
-    <Border Padding="20">
-      <StackPanel Spacing="20">
-        <TextBox Text="Sample">
-          <DataValidationErrors.Error>
-            <sys:Exception />
-          </DataValidationErrors.Error>
-        </TextBox>
-        <TextBox Text="Sample">
-          <TextBox.Styles>
-            <Style Selector="DataValidationErrors">
-              <Setter Property="Template" Value="{DynamicResource TooltipDataValidationContentTemplate}" />
-              <Setter Property="ErrorTemplate" Value="{DynamicResource TooltipDataValidationErrorTemplate}" />
-            </Style>
-          </TextBox.Styles>
-          <DataValidationErrors.Error>
-            <sys:Exception />
-          </DataValidationErrors.Error>
-        </TextBox>
-      </StackPanel>
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Padding="20">
+        <StackPanel Spacing="20">
+          <TextBox Text="Sample">
+            <DataValidationErrors.Error>
+              <sys:Exception />
+            </DataValidationErrors.Error>
+          </TextBox>
+          <TextBox Text="Sample">
+            <TextBox.Styles>
+              <Style Selector="DataValidationErrors">
+                <Setter Property="Template" Value="{DynamicResource TooltipDataValidationContentTemplate}" />
+                <Setter Property="ErrorTemplate" Value="{DynamicResource TooltipDataValidationErrorTemplate}" />
+              </Style>
+            </TextBox.Styles>
+            <DataValidationErrors.Error>
+              <sys:Exception />
+            </DataValidationErrors.Error>
+          </TextBox>
+        </StackPanel>
+      </Border>
+    </Design.PreviewWith>
+  
     <ControlTheme x:Key="{x:Type DataValidationErrors}" TargetType="DataValidationErrors">
       <ControlTheme.Resources>
         <DataTemplate x:Key="InlineDataValidationErrorTemplate">

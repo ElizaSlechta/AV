@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     x:CompileBindings="True">
-  <!--<Design.PreviewWith>
+  <Design.PreviewWith>
     <Border Padding="20">
       <StackPanel Orientation="Vertical" Spacing="20" Width="350">
         <Expander ExpandDirection="Up" Header="Expand Up" CornerRadius="25">
@@ -32,7 +32,7 @@
         </Expander>
       </StackPanel>
     </Border>
-  </Design.PreviewWith>-->
+  </Design.PreviewWith>
 
   <Thickness x:Key="ExpanderHeaderPadding">16</Thickness>
   <Thickness x:Key="ExpanderContentPadding">16</Thickness>

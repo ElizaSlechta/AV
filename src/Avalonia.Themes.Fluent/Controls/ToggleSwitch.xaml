@@ -2,40 +2,41 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
+     <Design.PreviewWith>
+      <StackPanel Margin="20" Width="250" Spacing="24" >
+        <StackPanel Spacing="12" >
+          <TextBlock
+            Text="Automatic updates"
+            Classes="h1"/>
+          <TextBlock
+            Text="Updates will be automaticly Downloaded and installed shile the computer is shutting down or restarting"
+            TextWrapping="Wrap"/>
+          <ToggleSwitch HorizontalContentAlignment="Left"
+            Content="Enable automatic Updates?"
+            OffContent="Uit"
+            OnContent="Aan"
+            VerticalAlignment="Bottom"/>
+        </StackPanel>
+
+        <StackPanel Spacing="12">
+          <TextBlock
+            Text="Previewer"
+            Classes="h1"/>
+          <TextBlock
+            Text="The previewer Shows a preview off your code, this could slow down your system"
+            TextWrapping="Wrap"/>
+          <ToggleSwitch
+            Background="Green"
+            IsChecked="True" />
+        </StackPanel>
+      </StackPanel>
+    </Design.PreviewWith>
   
     <Thickness x:Key="ToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
     <GridLength x:Key="ToggleSwitchPreContentMargin">6</GridLength>
     <GridLength x:Key="ToggleSwitchPostContentMargin">6</GridLength>
     <x:Double x:Key="ToggleSwitchThemeMinWidth">0</x:Double>
-    <!--<Design.PreviewWith>
-    <StackPanel Margin="20" Width="250" Spacing="24" >
-      <StackPanel Spacing="12" >
-        <TextBlock
-          Text="Automatic updates"
-          Classes="h1"/>
-        <TextBlock
-          Text="Updates will be automaticly Downloaded and installed shile the computer is shutting down or restarting"
-          TextWrapping="Wrap"/>
-        <ToggleSwitch HorizontalContentAlignment="Left"
-          Content="Enable automatic Updates?"
-          OffContent="Uit"
-          OnContent="Aan"
-          VerticalAlignment="Bottom"/>
-      </StackPanel>
 
-      <StackPanel Spacing="12">
-        <TextBlock
-          Text="Previewer"
-          Classes="h1"/>
-        <TextBlock
-          Text="The previewer Shows a preview off your code, this could slow down your system"
-          TextWrapping="Wrap"/>
-        <ToggleSwitch
-          Background="Green"
-          IsChecked="True" />
-      </StackPanel>
-    </StackPanel>
-  </Design.PreviewWith>-->
 
     <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
         <Setter Property="Foreground" Value="{DynamicResource ToggleSwitchContentForeground}" />

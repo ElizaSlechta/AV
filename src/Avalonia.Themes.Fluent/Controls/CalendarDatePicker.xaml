@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=netstandard"
                     x:CompileBindings="True">
-  <!--<Design.PreviewWith>
-    <Border Margin="20, 20, 20, 200">
-      <CalendarDatePicker Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Margin="20, 20, 20, 200">
+        <CalendarDatePicker Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+      </Border>
+    </Design.PreviewWith>
   
     <x:Double x:Key="CalendarDatePickerCurrentDayFontSize">12</x:Double>
     <x:Double x:Key="CalendarDatePickerMinHeight">32</x:Double>

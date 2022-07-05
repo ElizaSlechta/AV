@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!--<Design.PreviewWith>
-    <Border Padding="20">
-      <Border Background="{DynamicResource ComboBoxDropDownBackground}" BorderBrush="{DynamicResource ComboBoxDropDownBorderBrush}" BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}" Margin="0,-1,0,-1" Padding="{DynamicResource ComboBoxDropdownBorderPadding}" CornerRadius="{DynamicResource OverlayCornerRadius}">
-        <StackPanel HorizontalAlignment="Stretch">
-          <ComboBoxItem>Item 1</ComboBoxItem>
-          <ComboBoxItem>Item 2 long</ComboBoxItem>
-          <ComboBoxItem IsSelected="True">Item 3</ComboBoxItem>
-          <ComboBoxItem IsEnabled="False">Item 4</ComboBoxItem>
-        </StackPanel>
+    <Design.PreviewWith>
+      <Border Padding="20">
+        <Border Background="{DynamicResource ComboBoxDropDownBackground}" BorderBrush="{DynamicResource ComboBoxDropDownBorderBrush}" BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}" Margin="0,-1,0,-1" Padding="{DynamicResource ComboBoxDropdownBorderPadding}" CornerRadius="{DynamicResource OverlayCornerRadius}">
+          <StackPanel HorizontalAlignment="Stretch">
+            <ComboBoxItem>Item 1</ComboBoxItem>
+            <ComboBoxItem>Item 2 long</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">Item 3</ComboBoxItem>
+            <ComboBoxItem IsEnabled="False">Item 4</ComboBoxItem>
+          </StackPanel>
+        </Border>
       </Border>
-    </Border>
-  </Design.PreviewWith>-->
+    </Design.PreviewWith>
   
     <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
       <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForeground}" />

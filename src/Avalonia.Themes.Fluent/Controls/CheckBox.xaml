@@ -1,10 +1,10 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!--<Design.PreviewWith>
-    <Border Padding="20">
-      <CheckBox IsThreeState="True" IsChecked="True" Content="Content" Foreground="Gold" />
-    </Border>
-  </Design.PreviewWith>-->
+    <Design.PreviewWith>
+      <Border Padding="20">
+        <CheckBox IsThreeState="True" IsChecked="True" Content="Content" Foreground="Gold" />
+      </Border>
+    </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
       <Setter Property="Padding" Value="8,0,0,0" />
